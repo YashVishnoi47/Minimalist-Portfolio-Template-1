@@ -1,9 +1,28 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Great_Vibes,
+  Sacramento,
+} from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const greatVibes = Sacramento({
+  variable: "--font-great-vibes",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const geistMono = Geist_Mono({
@@ -20,9 +39,14 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${inter.variable} ${greatVibes.variable} ${geistMono.variable} h-full antialiased bg-background transition-all duration-300 ease-in-out flex justify-center items-`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="h-fit lg:w-[45%] md:w-[65%] w-[95%] max-w-[700px] py-10 flex-col justify-start items-center">
+        <Navbar />
+
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
